@@ -10,7 +10,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "WeblabLv\\Tests\\": "tests/"
+      "WeblabLv\\Renoks\\Tests\\": "tests/"
     }
   },
   "require-dev": {

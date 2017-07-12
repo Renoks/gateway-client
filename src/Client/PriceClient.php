@@ -27,5 +27,6 @@ class PriceClient extends AbstractClient
             ->setProductNumber($productNumber)
             ->setPrice($array[0])
             ->setQuantity($array[1]);
+        return $price;
     }
 }
