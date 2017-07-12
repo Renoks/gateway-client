@@ -1,0 +1,22 @@
+{
+  "name": "weblab-lv/renoks-gateway-client",
+  "description": "Client for Renoks Gateway",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "WebLabLv\\Renoks\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WeblabLv\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.1"
+  },
+  "require" : {
+    "guzzlehttp/guzzle": "^6.2"
+  }
+}
