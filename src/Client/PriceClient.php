@@ -11,5 +11,5 @@ namespace WebLabLv\Renoks\Client;
 
 class PriceClient extends AbstractClient
 {
-    protected $invocation = 'price';
+    protected $invocation = 'prices';
 }
