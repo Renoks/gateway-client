@@ -47,7 +47,7 @@ abstract class AbstractClient
     /**
      * @var string
      */
-    private $invocation = '';
+    protected $invocation = '';
 
     /**
      * AbstractClient constructor.
