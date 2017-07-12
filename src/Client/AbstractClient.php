@@ -10,6 +10,7 @@ namespace WebLabLv\Renoks\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
+use WebLabLv\Renoks\Entity\Price;
 use WebLabLv\Renoks\Exception\BadResponseStatusCodeException;
 use WebLabLv\Renoks\Exception\InvocationNotSetException;
 
@@ -17,7 +18,7 @@ use WebLabLv\Renoks\Exception\InvocationNotSetException;
  * Class AbstractClient
  * @package WebLabLv\Renoks\Client
  */
-abstract class AbstractClient
+abstract class AbstractClient implements ClientInterface
 {
     /**
      * @var string
@@ -50,6 +51,21 @@ abstract class AbstractClient
     protected $invocation = '';
 
     /**
+     * @var string|null
+     */
+    private $responseJson = null;
+
+    /**
+     * @var array|null
+     */
+    private $responseArray = null;
+
+    /**
+     * @var array|null
+     */
+    private $responseEntities;
+
+    /**
      * AbstractClient constructor.
      * @param string $endpoint
      * @param string $login
@@ -75,7 +91,7 @@ abstract class AbstractClient
         }
 
         $this->result = $this->client->get($this->fullRequestUrl());
-        $this->checkReponseStatusCode();
+        $this->checkResponseStatusCode();
     }
 
     private function checkEndpoint()
@@ -96,7 +112,7 @@ abstract class AbstractClient
     /**
      * @throws BadResponseStatusCodeException
      */
-    private function checkReponseStatusCode()
+    private function checkResponseStatusCode()
     {
         if (200 !== $this->result->getStatusCode()) {
             throw new BadResponseStatusCodeException();
@@ -106,11 +122,44 @@ abstract class AbstractClient
     /**
      * @return array
      */
-    public function getResponse()
+    public function getResponseEntities()
     {
-        return json_decode(
-            $this->result->getBody()->__toString(),
-            true
-        );
+        if (null === $this->responseEntities) {
+            $this->responseEntities = [];
+            foreach ($this->getResponseArray() as $productNumber => $array) {
+                $this->responseEntities[] = $this->arrayToEntity(
+                    $productNumber,
+                    $array
+                );
+            }
+        }
+
+        return $this->responseEntities;
+    }
+
+    /**
+     * @return array
+     */
+    public function getResponseArray()
+    {
+        if (null === $this->responseArray) {
+            $this->responseArray = json_decode(
+                $this->getResponseJson(),
+                true
+            );
+        }
+
+        return $this->responseArray;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponseJson()
+    {
+        if (null === $this->responseJson) {
+            $this->responseJson = $this->result->getBody()->__toString();
+        }
+        return $this->responseJson;
     }
 }
