@@ -16,5 +16,5 @@ interface ClientInterface
      * @param array $array
      * @return mixed
      */
-    public function arrayToEntity(string $productNumber, array $array);
+    function arrayToEntity(string $productNumber, array $array);
 }

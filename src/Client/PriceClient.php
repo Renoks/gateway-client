@@ -9,6 +9,8 @@
 namespace WebLabLv\Renoks\Client;
 
 
+use WebLabLv\Renoks\Entity\Price;
+
 class PriceClient extends AbstractClient
 {
     protected $invocation = 'prices';
@@ -16,8 +18,9 @@ class PriceClient extends AbstractClient
     /**
      * @param string $productNumber
      * @param array $array
+     * @return Price
      */
-    protected function arrayToEntity(string $productNumber, array $array)
+    public function arrayToEntity(string $productNumber, array $array)
     {
         $price = new Price();
         $price
