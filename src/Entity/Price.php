@@ -1,28 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jkuprijanovs
- * Date: 7/12/2017
- * Time: 3:30 PM
- */
 
 namespace WebLabLv\Renoks\Entity;
-
 
 class Price
 {
     /**
-     * @var string
+     * @var string $productNumber
      */
     private $productNumber;
 
     /**
-     * @var string
+     * @var string|null $productOeNumber
+     */
+    private $productOeNumber;
+
+    /**
+     * @var float $price
      */
     private $price;
 
     /**
-     * @var integer
+     * @var integer $quantity
      */
     private $quantity;
 
@@ -45,18 +43,36 @@ class Price
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getPrice(): string
+    public function getProductOeNumber()
+    {
+        return $this->productOeNumber;
+    }
+
+    /**
+     * @param null|string $productOeNumber
+     * @return Price
+     */
+    public function setProductOeNumber(string $productOeNumber = null): Price
+    {
+        $this->productOeNumber = $productOeNumber;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
     {
         return $this->price;
     }
 
     /**
-     * @param string $price
+     * @param float $price
      * @return Price
      */
-    public function setPrice(string $price): Price
+    public function setPrice(float $price): Price
     {
         $this->price = $price;
         return $this;

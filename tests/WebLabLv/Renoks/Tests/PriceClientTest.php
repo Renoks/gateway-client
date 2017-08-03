@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jkuprijanovs
- * Date: 7/12/2017
- * Time: 3:44 PM
- */
 
 namespace WebLabLv\Renoks\Tests;
 
@@ -15,16 +9,24 @@ class PriceClientTest extends TestCase
 {
     public function testArrayToEntity()
     {
-        $testNumber = 'testnumber';
-        $testPrice = '100.9000';
+        $testNumber   = 'testnumber';
+        $testOeNumber = '-';
+        $testPrice    = 100.9000;
         $testQuantity = 10;
 
         $priceClient = new PriceClient('', '', '');
 
-        $price = $priceClient->arrayToEntity($testNumber, [$testPrice, $testQuantity]);
+        $price = $priceClient->arrayToEntity([
+            'number'    => $testNumber,
+            'oe_number' => $testOeNumber,
+            'price'     => $testPrice,
+            'quantity'  => $testQuantity
+        ]);
 
         $this->assertInstanceOf('WebLabLv\Renoks\Entity\Price', $price);
+
         $this->assertEquals($testNumber, $price->getProductNumber());
+        $this->assertEquals($testOeNumber, $price->getProductOeNumber());
         $this->assertEquals($testPrice, $price->getPrice());
         $this->assertEquals($testQuantity, $price->getQuantity());
     }

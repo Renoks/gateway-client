@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jkuprijanovs
- * Date: 7/12/2017
- * Time: 1:13 PM
- */
 
 namespace WebLabLv\Renoks\Client;
 
@@ -21,66 +15,48 @@ use WebLabLv\Renoks\Exception\InvocationNotSetException;
 abstract class AbstractClient implements ClientInterface
 {
     /**
-     * @var string
+     * @var string $endpoint
      */
     private $endpoint;
-
     /**
-     * @var string
-     */
-    private $login;
-
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var Client
+     * @var Client $client
      */
     private $client;
-
     /**
-     * @var Response
+     * @var Response $result
      */
     private $result;
-
     /**
-     * @var string
+     * @var string $invocation
      */
     protected $invocation = '';
-
     /**
-     * @var string|null
+     * @var string|null $responseJson
      */
-    private $responseJson = null;
-
+    private $responseJson;
     /**
-     * @var array|null
+     * @var array|null $responseArray
      */
-    private $responseArray = null;
-
+    private $responseArray;
     /**
      * @var array|null
      */
     private $responseEntities;
 
     /**
-     * AbstractClient constructor.
      * @param string $endpoint
      * @param string $login
      * @param string $password
      */
-    public function __construct(
-        string $endpoint,
-        string $login,
-        string $password
-    )
+    public function __construct(string $endpoint, string $login, string $password)
     {
         $this->endpoint = $endpoint;
-        $this->login = $login;
-        $this->password = $password;
-        $this->client = new Client();
+        $this->client   = new Client([
+            'auth' => [
+                $login, $password
+            ]
+        ]);
+
         $this->checkEndpoint();
     }
 
@@ -104,7 +80,7 @@ abstract class AbstractClient implements ClientInterface
     /**
      * @return string
      */
-    private function fullRequestUrl()
+    private function fullRequestUrl(): string
     {
         return $this->endpoint . $this->invocation;
     }
@@ -122,15 +98,12 @@ abstract class AbstractClient implements ClientInterface
     /**
      * @return array
      */
-    public function getResponseEntities()
+    public function getResponseEntities(): array
     {
         if (null === $this->responseEntities) {
             $this->responseEntities = [];
-            foreach ($this->getResponseArray() as $productNumber => $array) {
-                $this->responseEntities[] = $this->arrayToEntity(
-                    $productNumber,
-                    $array
-                );
+            foreach ($this->getResponseArray() as $data) {
+                $this->responseEntities[] = $this->arrayToEntity($data);
             }
         }
 
@@ -140,22 +113,18 @@ abstract class AbstractClient implements ClientInterface
     /**
      * @return array
      */
-    public function getResponseArray()
+    public function getResponseArray(): array
     {
         if (null === $this->responseArray) {
-            $this->responseArray = json_decode(
-                $this->getResponseJson(),
-                true
-            );
+            $this->responseArray = json_decode($this->getResponseJson(), true);
         }
-
         return $this->responseArray;
     }
 
     /**
      * @return string
      */
-    public function getResponseJson()
+    public function getResponseJson(): string
     {
         if (null === $this->responseJson) {
             $this->responseJson = $this->result->getBody()->__toString();
