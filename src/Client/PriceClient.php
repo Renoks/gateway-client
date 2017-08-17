@@ -18,8 +18,10 @@ class PriceClient extends AbstractClient
         $price
             ->setProductNumber($data['number'])
             ->setProductOeNumber($data['oe_number'])
+            ->setDescription($data['description'])
             ->setPrice($data['price'])
-            ->setQuantity($data['quantity']);
+            ->setQuantity($data['quantity'])
+            ->setPictures($data['pictures']);
 
         return $price;
     }

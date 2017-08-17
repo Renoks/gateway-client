@@ -8,21 +8,26 @@ class Price
      * @var string $productNumber
      */
     private $productNumber;
-
     /**
      * @var string|null $productOeNumber
      */
     private $productOeNumber;
-
+    /**
+     * @var string|null $description
+     */
+    private $description;
     /**
      * @var float $price
      */
     private $price;
-
     /**
      * @var integer $quantity
      */
     private $quantity;
+    /**
+     * @var array $pictures
+     */
+    private $pictures = [];
 
     /**
      * @return string
@@ -57,6 +62,24 @@ class Price
     public function setProductOeNumber(string $productOeNumber = null): Price
     {
         $this->productOeNumber = $productOeNumber;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param null|string $description
+     * @return Price
+     */
+    public function setDescription(string $description = null): Price
+    {
+        $this->description = $description;
         return $this;
     }
 
@@ -96,4 +119,21 @@ class Price
         return $this;
     }
 
+    /**
+     * @return array
+     */
+    public function getPictures(): array
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * @param array $pictures
+     * @return Price
+     */
+    public function setPictures(array $pictures): Price
+    {
+        $this->pictures = $pictures;
+        return $this;
+    }
 }
