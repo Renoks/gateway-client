@@ -1,5 +1,5 @@
 {
-  "name": "weblab-lv/renoks-gateway-client",
+  "name": "renoks/gateway-client",
   "description": "Client for Renoks Gateway",
   "type": "library",
   "license": "MIT",
