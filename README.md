@@ -14,26 +14,10 @@ Ask your vendor for $endpoint, $login, $password.
 
 # Technical documentation
 
-##### PriceClient.php
+##### PriceClient.php sendRequest method possible exceptions
 ```
 throw GuzzleHttp\Exception\ClientException then $endpoint is not valid url (404, 403 http status codes) or credentils ($login and $password) are not valid (401 http status code)
 throw WebLabLv\Renoks\Exception\BadResponseStatusCodeException then $endpoint response http status code !== 200
 ```
-##### Api   
-You can get all prices manually, need to add **/prices** to your given vendor $endpoint uri to fetch prices.   
-[Http basic auth used](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate, so you need to provide your given vendor $login, $password to access.
-Stateless authentication method used, so you need to provide your credentials at **each** request. 
 
-##### Errors
-Credentials are not provided
-```json
-{"message":"Full authentication is required to access this resource"} 
-```
-Credentials ($login) is not valid
-```json
-{"message": "Username could not be found."}
-```
-Credentials ($login and $password) are not valid
-```json
-{"message": "Invalid credentials."}
-```
+##### [Get prices without php client library]()
