@@ -60,6 +60,10 @@ abstract class AbstractClient implements ClientInterface
         $this->checkEndpoint();
     }
 
+    /**
+     * @throws BadResponseStatusCodeException if endpoint httpStatusCode !== 200
+     * @throws InvocationNotSetException if endpoint invocation is not defined
+     */
     public function sendRequest()
     {
         if ('' == $this->invocation) {
