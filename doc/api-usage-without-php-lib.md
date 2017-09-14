@@ -1,6 +1,6 @@
 ##### Api
 You can get all prices manually, need to add **/prices** to your given vendor $endpoint uri to fetch prices.   
-[Http basic auth used](https://en.wikipedia.org/wiki/Basic_access_authentication) to authenticate, so you need to provide your given vendor $login, $password to access.
+[Http basic auth](https://en.wikipedia.org/wiki/Basic_access_authentication) used to authenticate, so you need to provide your given vendor $login, $password to access.
 Stateless authentication method used, so you need to provide your credentials at **each** request. 
 
 ##### Errors

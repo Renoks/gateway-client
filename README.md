@@ -20,4 +20,4 @@ throw GuzzleHttp\Exception\ClientException then $endpoint is not valid url (404,
 throw WebLabLv\Renoks\Exception\BadResponseStatusCodeException then $endpoint response http status code !== 200
 ```
 
-##### [Get prices without php client library]()
+##### [Get prices without php client library](/doc/api-usage-without-php-lib.md)
