@@ -21,3 +21,21 @@ throw WebLabLv\Renoks\Exception\BadResponseStatusCodeException then $endpoint re
 ```
 
 ##### [Get prices without php client library](/doc/api-usage-without-php-lib.md)
+
+# Response
+```json
+[
+    {
+        "number": "5013L83X", // string
+        "oe_number": null, // string|null
+        "description": "178;80;48;A/A brazed;air;OEM/OES;", // string
+        "price": 46.24, // float
+        "quantity": 0, // int
+        "pictures": [
+            "http://www.fastdeliverycarparts.com/content/aizmugures-lukturi/__750/32u188-e.jpg",
+            "http://www.fastdeliverycarparts.com/content/aizmugures-lukturi/__750/32u188-e-1.jpg"
+        ] // can be empty array
+    }
+    // ...
+]
+```
