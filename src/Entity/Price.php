@@ -13,6 +13,26 @@ class Price
      */
     private $productOeNumber;
     /**
+     * @var string $productPartName
+     */
+    private $productPartName;
+    /**
+     * @var string $productPartGroup
+     */
+    private $productPartGroup;
+    /**
+     * @var string $productPartKind
+     */
+    private $productPartKind;
+    /**
+     * @var string $productQuality
+     */
+    private $productQuality;
+    /**
+     * @var string $productMeasureUnit
+     */
+    private $productMeasureUnit;
+    /**
      * @var string|null $description
      */
     private $description;
@@ -62,6 +82,96 @@ class Price
     public function setProductOeNumber(string $productOeNumber = null): Price
     {
         $this->productOeNumber = $productOeNumber;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductPartName(): string
+    {
+        return $this->productPartName;
+    }
+
+    /**
+     * @param string $productPartName
+     * @return Price
+     */
+    public function setProductPartName(string $productPartName): Price
+    {
+        $this->productPartName = $productPartName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductPartGroup(): string
+    {
+        return $this->productPartGroup;
+    }
+
+    /**
+     * @param string $productPartGroup
+     * @return Price
+     */
+    public function setProductPartGroup(string $productPartGroup): Price
+    {
+        $this->productPartGroup = $productPartGroup;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductPartKind(): string
+    {
+        return $this->productPartKind;
+    }
+
+    /**
+     * @param string $productPartKind
+     * @return Price
+     */
+    public function setProductPartKind(string $productPartKind): Price
+    {
+        $this->productPartKind = $productPartKind;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductQuality(): string
+    {
+        return $this->productQuality;
+    }
+
+    /**
+     * @param string $productQuality
+     * @return Price
+     */
+    public function setProductQuality(string $productQuality): Price
+    {
+        $this->productQuality = $productQuality;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductMeasureUnit(): string
+    {
+        return $this->productMeasureUnit;
+    }
+
+    /**
+     * @param string $productMeasureUnit
+     * @return Price
+     */
+    public function setProductMeasureUnit(string $productMeasureUnit): Price
+    {
+        $this->productMeasureUnit = $productMeasureUnit;
         return $this;
     }
 
