@@ -13,6 +13,10 @@ class Price
      */
     private $productOeNumber;
     /**
+     * @var string|null $productProducer
+     */
+    private $productProducer;
+    /**
      * @var string $productPartName
      */
     private $productPartName;
@@ -82,6 +86,24 @@ class Price
     public function setProductOeNumber(string $productOeNumber = null): Price
     {
         $this->productOeNumber = $productOeNumber;
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getProductProducer()
+    {
+        return $this->productProducer;
+    }
+
+    /**
+     * @param null|string $productProducer
+     * @return Price
+     */
+    public function setProductProducer(string $productProducer = null): Price
+    {
+        $this->productProducer = $productProducer;
         return $this;
     }
 
