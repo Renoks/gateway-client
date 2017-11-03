@@ -28,6 +28,7 @@ throw WebLabLv\Renoks\Exception\BadResponseStatusCodeException then $endpoint re
     {
         "number": "5013L83X",
         "oe_number": "1231800065,",
+        "producer": "BILSTEIN",
         "part_name": "Oil cooler",
         "part_group": "Thermal parts",
         "part_kind": "Radiators",
