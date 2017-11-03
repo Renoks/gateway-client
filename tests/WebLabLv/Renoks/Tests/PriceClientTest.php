@@ -11,6 +11,7 @@ final class PriceClientTest extends TestCase
     {
         $testNumber      = '5013L83X';
         $testOeNumber    = '-';
+        $testProducer    = 'BILSTEIN';
         $testPartName    = 'Oil cooler';
         $testPartGroup   = 'Thermal parts';
         $testPartKind    = 'Radiators';
@@ -28,6 +29,7 @@ final class PriceClientTest extends TestCase
         $price = $priceClient->arrayToEntity([
             'number'       => $testNumber,
             'oe_number'    => $testOeNumber,
+            'producer'     => $testProducer,
             'part_name'    => $testPartName,
             'part_group'   => $testPartGroup,
             'part_kind'    => $testPartKind,
@@ -43,6 +45,7 @@ final class PriceClientTest extends TestCase
 
         $this->assertEquals($testNumber, $price->getProductNumber());
         $this->assertEquals($testOeNumber, $price->getProductOeNumber());
+        $this->assertEquals($testProducer, $price->getProductProducer());
         $this->assertEquals($testPartName, $price->getProductPartName());
         $this->assertEquals($testPartGroup, $price->getProductPartGroup());
         $this->assertEquals($testPartKind, $price->getProductPartKind());
