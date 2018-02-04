@@ -27,6 +27,11 @@ abstract class AbstractClient implements ClientInterface
      */
     private $result;
     /**
+     * @var bool $withWatermark
+     */
+    private $withWatermark = true;
+
+    /**
      * @var string $invocation
      */
     protected $invocation = '';
@@ -61,6 +66,16 @@ abstract class AbstractClient implements ClientInterface
     }
 
     /**
+     * @param bool $withWatermark
+     * @return AbstractClient
+     */
+    public function withWatermark(bool $withWatermark): AbstractClient
+    {
+        $this->withWatermark = $withWatermark;
+        return $this;
+    }
+
+    /**
      * @throws BadResponseStatusCodeException if endpoint httpStatusCode !== 200
      * @throws InvocationNotSetException if endpoint invocation is not defined
      */
@@ -70,7 +85,11 @@ abstract class AbstractClient implements ClientInterface
             throw new InvocationNotSetException();
         }
 
-        $this->result = $this->client->get($this->fullRequestUrl());
+        $this->result = $this->client->get($this->fullRequestUrl(), [
+            'query' => [
+                'with-watermark' => $this->withWatermark
+            ]
+        ]);
         $this->checkResponseStatusCode();
     }
 

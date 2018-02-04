@@ -5,8 +5,10 @@ composer require renoks/gateway-client
 
 # Usage
 ```php
+$withWatermark = true; // default value - get product pictures with watermark
+
 $client = new WebLabLv\Renoks\Client\PriceClient($endpoint, $login, $password);
-$client->sendRequest();
+$client->withWatermark($withWatermark)->sendRequest();
 ```
 Ask your vendor for $endpoint, $login, $password.
 
