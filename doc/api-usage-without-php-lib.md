@@ -1,9 +1,14 @@
-##### Api
+##### Get prices [get]
 You can get all prices manually, need to add **/prices** to your given vendor $endpoint uri to fetch prices.   
 [Http basic auth](https://en.wikipedia.org/wiki/Basic_access_authentication) used to authenticate, so you need to provide your given vendor $login, $password to access.
 Stateless authentication method used, so you need to provide your credentials at **each** request. 
 
-##### Errors
+##### Create order [post]
+To create order in Renoks Gateway system, need to add **/orders** to your given vendor $endpoint uri.
+[Http basic auth](https://en.wikipedia.org/wiki/Basic_access_authentication) used to authenticate, so you need to provide your given vendor $login, $password to access.
+Request post parameter **data** is **required*** and must be **array** type
+
+##### Possible errors
 Credentials are not provided
 ```json
 {"message":"Full authentication is required to access this resource"} 
@@ -15,4 +20,8 @@ Credentials ($login) is not valid
 Credentials ($login and $password) are not valid
 ```json
 {"message": "Invalid credentials."}
+```
+Create order data parameter not given or is empty
+```json
+{"code":400, "message": "Request validation failed, required parameter 'data' should not be blank"}
 ```
