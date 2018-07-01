@@ -45,6 +45,11 @@ Get prices example
         "quality": "Q",
         "measure_unit": "pcs",
         "description": "178;80;48;A/A brazed;air;OEM/OES;",
+        "description_translations": {
+          "en": "Radiator",
+          "lv": "Radiators dzesēšanas",
+          "ru": "радиатор охлаждения"
+        },
         "price": 46.24,
         "quantity": 0,
         "pictures": [
